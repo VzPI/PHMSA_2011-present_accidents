@@ -1,0 +1,1347 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        #map {
+            width: 1437px;
+            height: 786px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/gd2010toPresentxlsxgd2010toPresent_0.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[24.4437342489,-128.244329893],[50.6938714959,-66.4251371243]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://stamen-tiles-a.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}.png', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_gd2010toPresentxlsxgd2010toPresent_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DATAFILE_AS_OF'] !== null ? Autolinker.link(String(feature.properties['DATAFILE_AS_OF'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FF'] !== null ? Autolinker.link(String(feature.properties['FF'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SIGNIFICANT'] !== null ? Autolinker.link(String(feature.properties['SIGNIFICANT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SERIOUS'] !== null ? Autolinker.link(String(feature.properties['SERIOUS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['REPORT_NUMBER'] !== null ? Autolinker.link(String(feature.properties['REPORT_NUMBER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPPLEMENTAL_NUMBER'] !== null ? Autolinker.link(String(feature.properties['SUPPLEMENTAL_NUMBER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['REPORT_RECEIVED_DATE'] !== null ? Autolinker.link(String(feature.properties['REPORT_RECEIVED_DATE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['REPORT_TYPE'] !== null ? Autolinker.link(String(feature.properties['REPORT_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATOR_ID'] !== null ? Autolinker.link(String(feature.properties['OPERATOR_ID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? Autolinker.link(String(feature.properties['NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATOR_STREET_ADDRESS'] !== null ? Autolinker.link(String(feature.properties['OPERATOR_STREET_ADDRESS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATOR_CITY_NAME'] !== null ? Autolinker.link(String(feature.properties['OPERATOR_CITY_NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATOR_STATE_ABBREVIATION'] !== null ? Autolinker.link(String(feature.properties['OPERATOR_STATE_ABBREVIATION'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATOR_POSTAL_CODE'] !== null ? Autolinker.link(String(feature.properties['OPERATOR_POSTAL_CODE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCAL_DATETIME'] !== null ? Autolinker.link(String(feature.properties['LOCAL_DATETIME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['IYEAR'] !== null ? Autolinker.link(String(feature.properties['IYEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATION_STREET_ADDRESS'] !== null ? Autolinker.link(String(feature.properties['LOCATION_STREET_ADDRESS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATION_CITY_NAME'] !== null ? Autolinker.link(String(feature.properties['LOCATION_CITY_NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATION_COUNTY_NAME'] !== null ? Autolinker.link(String(feature.properties['LOCATION_COUNTY_NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATION_STATE_ABBREVIATION'] !== null ? Autolinker.link(String(feature.properties['LOCATION_STATE_ABBREVIATION'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATION_POSTAL_CODE'] !== null ? Autolinker.link(String(feature.properties['LOCATION_POSTAL_CODE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATION_LATITUDE'] !== null ? Autolinker.link(String(feature.properties['LOCATION_LATITUDE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATION_LONGITUDE'] !== null ? Autolinker.link(String(feature.properties['LOCATION_LONGITUDE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NRC_RPT_NUM'] !== null ? Autolinker.link(String(feature.properties['NRC_RPT_NUM'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NRC_RPT_DATETIME'] !== null ? Autolinker.link(String(feature.properties['NRC_RPT_DATETIME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INCIDENT_RESULTED'] !== null ? Autolinker.link(String(feature.properties['INCIDENT_RESULTED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COMMODITY_RELEASED_TYPE'] !== null ? Autolinker.link(String(feature.properties['COMMODITY_RELEASED_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COMMODITY_DETAILS'] !== null ? Autolinker.link(String(feature.properties['COMMODITY_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GAS_RELEASED'] !== null ? Autolinker.link(String(feature.properties['GAS_RELEASED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FATALITY_IND'] !== null ? Autolinker.link(String(feature.properties['FATALITY_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_EMP_FATALITIES'] !== null ? Autolinker.link(String(feature.properties['NUM_EMP_FATALITIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_CONTR_FATALITIES'] !== null ? Autolinker.link(String(feature.properties['NUM_CONTR_FATALITIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_ER_FATALITIES'] !== null ? Autolinker.link(String(feature.properties['NUM_ER_FATALITIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_WORKER_FATALITIES'] !== null ? Autolinker.link(String(feature.properties['NUM_WORKER_FATALITIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_GP_FATALITIES'] !== null ? Autolinker.link(String(feature.properties['NUM_GP_FATALITIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FATAL'] !== null ? Autolinker.link(String(feature.properties['FATAL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INJURY_IND'] !== null ? Autolinker.link(String(feature.properties['INJURY_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_EMP_INJURIES'] !== null ? Autolinker.link(String(feature.properties['NUM_EMP_INJURIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_CONTR_INJURIES'] !== null ? Autolinker.link(String(feature.properties['NUM_CONTR_INJURIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_ER_INJURIES'] !== null ? Autolinker.link(String(feature.properties['NUM_ER_INJURIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_WORKER_INJURIES'] !== null ? Autolinker.link(String(feature.properties['NUM_WORKER_INJURIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_GP_INJURIES'] !== null ? Autolinker.link(String(feature.properties['NUM_GP_INJURIES'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INJURE'] !== null ? Autolinker.link(String(feature.properties['INJURE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHUTDOWN_DUE_ACCIDENT_IND'] !== null ? Autolinker.link(String(feature.properties['SHUTDOWN_DUE_ACCIDENT_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHUTDOWN_EXPLAIN'] !== null ? Autolinker.link(String(feature.properties['SHUTDOWN_EXPLAIN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHUTDOWN_DATETIME'] !== null ? Autolinker.link(String(feature.properties['SHUTDOWN_DATETIME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESTART_DATETIME'] !== null ? Autolinker.link(String(feature.properties['RESTART_DATETIME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STILL_SHUTDOWN_IND'] !== null ? Autolinker.link(String(feature.properties['STILL_SHUTDOWN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['IGNITE_IND'] !== null ? Autolinker.link(String(feature.properties['IGNITE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EXPLODE_IND'] !== null ? Autolinker.link(String(feature.properties['EXPLODE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_PUB_EVACUATED'] !== null ? Autolinker.link(String(feature.properties['NUM_PUB_EVACUATED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INCIDENT_IDENTIFIED_DATETIME'] !== null ? Autolinker.link(String(feature.properties['INCIDENT_IDENTIFIED_DATETIME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ON_SITE_DATETIME'] !== null ? Autolinker.link(String(feature.properties['ON_SITE_DATETIME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FEDERAL'] !== null ? Autolinker.link(String(feature.properties['FEDERAL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATION_TYPE'] !== null ? Autolinker.link(String(feature.properties['LOCATION_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INCIDENT_AREA_TYPE'] !== null ? Autolinker.link(String(feature.properties['INCIDENT_AREA_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INCIDENT_AREA_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['INCIDENT_AREA_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INCIDENT_AREA_DETAILS'] !== null ? Autolinker.link(String(feature.properties['INCIDENT_AREA_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DEPTH_OF_COVER'] !== null ? Autolinker.link(String(feature.properties['DEPTH_OF_COVER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CROSSING'] !== null ? Autolinker.link(String(feature.properties['CROSSING'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BRIDGE_CROSSING_IND'] !== null ? Autolinker.link(String(feature.properties['BRIDGE_CROSSING_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BRIDGE_TYPE'] !== null ? Autolinker.link(String(feature.properties['BRIDGE_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RAILROAD_CROSSING_IND'] !== null ? Autolinker.link(String(feature.properties['RAILROAD_CROSSING_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RAILROAD_TYPE'] !== null ? Autolinker.link(String(feature.properties['RAILROAD_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ROAD_CROSSING_IND'] !== null ? Autolinker.link(String(feature.properties['ROAD_CROSSING_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ROAD_TYPE'] !== null ? Autolinker.link(String(feature.properties['ROAD_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WATER_CROSSING_IND'] !== null ? Autolinker.link(String(feature.properties['WATER_CROSSING_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WATER_TYPE'] !== null ? Autolinker.link(String(feature.properties['WATER_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WATER_NAME'] !== null ? Autolinker.link(String(feature.properties['WATER_NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WATER_DEPTH'] !== null ? Autolinker.link(String(feature.properties['WATER_DEPTH'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_FACILITY_TYPE'] !== null ? Autolinker.link(String(feature.properties['PIPE_FACILITY_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_TYPE_OTHER'] !== null ? Autolinker.link(String(feature.properties['PIPE_TYPE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SYSTEM_PART_INVOLVED'] !== null ? Autolinker.link(String(feature.properties['SYSTEM_PART_INVOLVED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SYSTEM_PART_DETAILS'] !== null ? Autolinker.link(String(feature.properties['SYSTEM_PART_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INSTALLATION_YEAR_UNKNOWN_IND'] !== null ? Autolinker.link(String(feature.properties['INSTALLATION_YEAR_UNKNOWN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INSTALLATION_YEAR'] !== null ? Autolinker.link(String(feature.properties['INSTALLATION_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_DIAMETER'] !== null ? Autolinker.link(String(feature.properties['PIPE_DIAMETER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_SPECIFICATION'] !== null ? Autolinker.link(String(feature.properties['PIPE_SPECIFICATION'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_MFRR_UNKNOWN_IND'] !== null ? Autolinker.link(String(feature.properties['PIPE_MFRR_UNKNOWN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_MANUFACTURER'] !== null ? Autolinker.link(String(feature.properties['PIPE_MANUFACTURER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_MFR_YEAR_UNKNOWN_IND'] !== null ? Autolinker.link(String(feature.properties['PIPE_MFR_YEAR_UNKNOWN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_MANUFACTURE_YEAR'] !== null ? Autolinker.link(String(feature.properties['PIPE_MANUFACTURE_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MATERIAL_INVOLVED'] !== null ? Autolinker.link(String(feature.properties['MATERIAL_INVOLVED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MATERIAL_DETAILS'] !== null ? Autolinker.link(String(feature.properties['MATERIAL_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SEAM_TYPE_UNKNOWN_IND'] !== null ? Autolinker.link(String(feature.properties['SEAM_TYPE_UNKNOWN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MATERIAL_SEAM_TYPE'] !== null ? Autolinker.link(String(feature.properties['MATERIAL_SEAM_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WT_STEEL'] !== null ? Autolinker.link(String(feature.properties['WT_STEEL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WT_STEEL_UNKNOWN_IND'] !== null ? Autolinker.link(String(feature.properties['WT_STEEL_UNKNOWN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PLASTIC_TYPE'] !== null ? Autolinker.link(String(feature.properties['PLASTIC_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PLASTIC_DETAILS'] !== null ? Autolinker.link(String(feature.properties['PLASTIC_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PLASTIC_SDR'] !== null ? Autolinker.link(String(feature.properties['PLASTIC_SDR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WT_PLASTIC'] !== null ? Autolinker.link(String(feature.properties['WT_PLASTIC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WT_PLASTIC_UNKNOWN_IND'] !== null ? Autolinker.link(String(feature.properties['WT_PLASTIC_UNKNOWN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MATERIAL_PE_PIPE_CODE'] !== null ? Autolinker.link(String(feature.properties['MATERIAL_PE_PIPE_CODE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PLASTIC_PE_UNKNOWN_IND'] !== null ? Autolinker.link(String(feature.properties['PLASTIC_PE_UNKNOWN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RELEASE_TYPE'] !== null ? Autolinker.link(String(feature.properties['RELEASE_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PUNCTURE_AXIAL'] !== null ? Autolinker.link(String(feature.properties['PUNCTURE_AXIAL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PUNCTURE_CIRCUM'] !== null ? Autolinker.link(String(feature.properties['PUNCTURE_CIRCUM'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LEAK_TYPE'] !== null ? Autolinker.link(String(feature.properties['LEAK_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LEAK_TYPE_OTHER'] !== null ? Autolinker.link(String(feature.properties['LEAK_TYPE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RUPTURE_ORIENT'] !== null ? Autolinker.link(String(feature.properties['RUPTURE_ORIENT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RUPTURE_DETAILS'] !== null ? Autolinker.link(String(feature.properties['RUPTURE_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RUPTURE_LENGTH'] !== null ? Autolinker.link(String(feature.properties['RUPTURE_LENGTH'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RUPTURE_WIDTH'] !== null ? Autolinker.link(String(feature.properties['RUPTURE_WIDTH'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RELEASE_TYPE_DETAILS'] !== null ? Autolinker.link(String(feature.properties['RELEASE_TYPE_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CLASS_LOCATION_TYPE'] !== null ? Autolinker.link(String(feature.properties['CLASS_LOCATION_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_OPER_PAID'] !== null ? Autolinker.link(String(feature.properties['EST_COST_OPER_PAID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_OPER_PAID_CURRENT'] !== null ? Autolinker.link(String(feature.properties['EST_COST_OPER_PAID_CURRENT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_GAS_RELEASED'] !== null ? Autolinker.link(String(feature.properties['EST_COST_GAS_RELEASED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_GAS_RELEASED_CURRENT'] !== null ? Autolinker.link(String(feature.properties['EST_COST_GAS_RELEASED_CURRENT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_PROP_DAMAGE'] !== null ? Autolinker.link(String(feature.properties['EST_COST_PROP_DAMAGE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_PROP_DAMAGE_CURRENT'] !== null ? Autolinker.link(String(feature.properties['EST_COST_PROP_DAMAGE_CURRENT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_EMERGENCY'] !== null ? Autolinker.link(String(feature.properties['EST_COST_EMERGENCY'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_EMERGENCY_CURRENT'] !== null ? Autolinker.link(String(feature.properties['EST_COST_EMERGENCY_CURRENT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_OTHER'] !== null ? Autolinker.link(String(feature.properties['EST_COST_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_OTHER_CURRENT'] !== null ? Autolinker.link(String(feature.properties['EST_COST_OTHER_CURRENT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EST_COST_OTHER_DETAILS'] !== null ? Autolinker.link(String(feature.properties['EST_COST_OTHER_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOTAL_COST'] !== null ? Autolinker.link(String(feature.properties['TOTAL_COST'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOTAL_COST_IN84'] !== null ? Autolinker.link(String(feature.properties['TOTAL_COST_IN84'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TOTAL_COST_CURRENT'] !== null ? Autolinker.link(String(feature.properties['TOTAL_COST_CURRENT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COMMERCIAL_AFFECTED'] !== null ? Autolinker.link(String(feature.properties['COMMERCIAL_AFFECTED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INDUSTRIAL_AFFECTED'] !== null ? Autolinker.link(String(feature.properties['INDUSTRIAL_AFFECTED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESIDENCES_AFFECTED'] !== null ? Autolinker.link(String(feature.properties['RESIDENCES_AFFECTED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ACCIDENT_PSIG'] !== null ? Autolinker.link(String(feature.properties['ACCIDENT_PSIG'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NORMAL_PSIG'] !== null ? Autolinker.link(String(feature.properties['NORMAL_PSIG'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MOP_PSIG'] !== null ? Autolinker.link(String(feature.properties['MOP_PSIG'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ACCIDENT_PRESSURE'] !== null ? Autolinker.link(String(feature.properties['ACCIDENT_PRESSURE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SCADA_IN_PLACE_IND'] !== null ? Autolinker.link(String(feature.properties['SCADA_IN_PLACE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SCADA_OPERATING_IND'] !== null ? Autolinker.link(String(feature.properties['SCADA_OPERATING_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SCADA_FUNCTIONAL_IND'] !== null ? Autolinker.link(String(feature.properties['SCADA_FUNCTIONAL_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SCADA_DETECTION_IND'] !== null ? Autolinker.link(String(feature.properties['SCADA_DETECTION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SCADA_CONF_IND'] !== null ? Autolinker.link(String(feature.properties['SCADA_CONF_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ACCIDENT_IDENTIFIER'] !== null ? Autolinker.link(String(feature.properties['ACCIDENT_IDENTIFIER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ACCIDENT_DETAILS'] !== null ? Autolinker.link(String(feature.properties['ACCIDENT_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATOR_TYPE'] !== null ? Autolinker.link(String(feature.properties['OPERATOR_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVESTIGATION_STATUS'] !== null ? Autolinker.link(String(feature.properties['INVESTIGATION_STATUS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVESTIGATION_STATUS_DETAILS'] !== null ? Autolinker.link(String(feature.properties['INVESTIGATION_STATUS_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_SCHEDULE_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_SCHEDULE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_NO_SCHEDULE_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_NO_SCHEDULE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_NO_SCHEDULE_IND_DETAILS'] !== null ? Autolinker.link(String(feature.properties['INVEST_NO_SCHEDULE_IND_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_NO_CONTROL_ROOM_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_NO_CONTROL_ROOM_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_NO_CONTROLLER_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_NO_CONTROLLER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_INCORRECT_ACTION_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_INCORRECT_ACTION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_FATIGUE_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_FATIGUE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_INCORRECT_PROCEDURE_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_INCORRECT_PROCEDURE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_INCORRECT_CONTROL_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_INCORRECT_CONTROL_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_MAINT_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_MAINT_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_OTHER_IND'] !== null ? Autolinker.link(String(feature.properties['INVEST_OTHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INVEST_OTHER_IND_DETAILS'] !== null ? Autolinker.link(String(feature.properties['INVEST_OTHER_IND_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EMPLOYEE_DRUG_TEST_IND'] !== null ? Autolinker.link(String(feature.properties['EMPLOYEE_DRUG_TEST_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_EMPLOYEES_TESTED'] !== null ? Autolinker.link(String(feature.properties['NUM_EMPLOYEES_TESTED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_EMPLOYEES_FAILED'] !== null ? Autolinker.link(String(feature.properties['NUM_EMPLOYEES_FAILED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CONTRACTOR_DRUG_TEST_IND'] !== null ? Autolinker.link(String(feature.properties['CONTRACTOR_DRUG_TEST_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_CONTRACTORS_TESTED'] !== null ? Autolinker.link(String(feature.properties['NUM_CONTRACTORS_TESTED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUM_CONTRACTORS_FAILED'] !== null ? Autolinker.link(String(feature.properties['NUM_CONTRACTORS_FAILED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CAUSE'] !== null ? Autolinker.link(String(feature.properties['CAUSE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CAUSE_DETAILS'] !== null ? Autolinker.link(String(feature.properties['CAUSE_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MAP_CAUSE'] !== null ? Autolinker.link(String(feature.properties['MAP_CAUSE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MAP_SUBCAUSE'] !== null ? Autolinker.link(String(feature.properties['MAP_SUBCAUSE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INTERNAL_EXTERNAL'] !== null ? Autolinker.link(String(feature.properties['INTERNAL_EXTERNAL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VISUAL_EXAM_RESULTS'] !== null ? Autolinker.link(String(feature.properties['VISUAL_EXAM_RESULTS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VISUAL_EXAM_DETAILS'] !== null ? Autolinker.link(String(feature.properties['VISUAL_EXAM_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GALVANIC_CORROSION_IND'] !== null ? Autolinker.link(String(feature.properties['GALVANIC_CORROSION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ATMOSPHERE_CORROSION_IND'] !== null ? Autolinker.link(String(feature.properties['ATMOSPHERE_CORROSION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STRAY_CURRENT_CORROSION_IND'] !== null ? Autolinker.link(String(feature.properties['STRAY_CURRENT_CORROSION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MICROBIOLOGICAL_CORROSION_IND'] !== null ? Autolinker.link(String(feature.properties['MICROBIOLOGICAL_CORROSION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SELECTIVE_SEAM_CORROSION_IND'] !== null ? Autolinker.link(String(feature.properties['SELECTIVE_SEAM_CORROSION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_CORROSION_IND'] !== null ? Autolinker.link(String(feature.properties['OTHER_CORROSION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CORROSION_TYPE_DETAILS'] !== null ? Autolinker.link(String(feature.properties['CORROSION_TYPE_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FIELD_EXAM_BASIS_IND'] !== null ? Autolinker.link(String(feature.properties['FIELD_EXAM_BASIS_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['METALLURGICAL_BASIS_IND'] !== null ? Autolinker.link(String(feature.properties['METALLURGICAL_BASIS_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_BASIS_IND'] !== null ? Autolinker.link(String(feature.properties['OTHER_BASIS_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CORROSION_BASIS_DETAILS'] !== null ? Autolinker.link(String(feature.properties['CORROSION_BASIS_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UNDERGROUND_LOCATION'] !== null ? Autolinker.link(String(feature.properties['UNDERGROUND_LOCATION'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UNDER_CATHODIC_PROTECTION_IND'] !== null ? Autolinker.link(String(feature.properties['UNDER_CATHODIC_PROTECTION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CATHODIC_PRO_START_YEAR'] !== null ? Autolinker.link(String(feature.properties['CATHODIC_PRO_START_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SHIELDING_EVIDENT'] !== null ? Autolinker.link(String(feature.properties['SHIELDING_EVIDENT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CATHODIC_SURVEY_TYPE'] !== null ? Autolinker.link(String(feature.properties['CATHODIC_SURVEY_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CP_ANNUAL_SURVEY_IND'] !== null ? Autolinker.link(String(feature.properties['CP_ANNUAL_SURVEY_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CLOSE_INTERVAL_SURVEY_IND'] !== null ? Autolinker.link(String(feature.properties['CLOSE_INTERVAL_SURVEY_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_CP_SURVEY_IND'] !== null ? Autolinker.link(String(feature.properties['OTHER_CP_SURVEY_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CP_ANNUAL_SURVEY_YEAR'] !== null ? Autolinker.link(String(feature.properties['CP_ANNUAL_SURVEY_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CLOSE_INTERVAL_SURVEY_YEAR'] !== null ? Autolinker.link(String(feature.properties['CLOSE_INTERVAL_SURVEY_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_CP_SURVEY_YEAR'] !== null ? Autolinker.link(String(feature.properties['OTHER_CP_SURVEY_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EXTERNALLY_COATED'] !== null ? Autolinker.link(String(feature.properties['EXTERNALLY_COATED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PRIOR_DAMAGE'] !== null ? Autolinker.link(String(feature.properties['PRIOR_DAMAGE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COATING_TYPE'] !== null ? Autolinker.link(String(feature.properties['COATING_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COATING_TYPE_DETAILS'] !== null ? Autolinker.link(String(feature.properties['COATING_TYPE_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_VISUAL_EXAM_RESULTS'] !== null ? Autolinker.link(String(feature.properties['INT_VISUAL_EXAM_RESULTS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_VISUAL_EXAM_DETAILS'] !== null ? Autolinker.link(String(feature.properties['INT_VISUAL_EXAM_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_CORROSIVE_COMMODITY_IND'] !== null ? Autolinker.link(String(feature.properties['INT_CORROSIVE_COMMODITY_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_WATER_ACID_IND'] !== null ? Autolinker.link(String(feature.properties['INT_WATER_ACID_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_MICROBIOLOGICAL_IND'] !== null ? Autolinker.link(String(feature.properties['INT_MICROBIOLOGICAL_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_EROSION_IND'] !== null ? Autolinker.link(String(feature.properties['INT_EROSION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_OTHER_CORROSION_IND'] !== null ? Autolinker.link(String(feature.properties['INT_OTHER_CORROSION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_CORROSION_TYPE_DETAILS'] !== null ? Autolinker.link(String(feature.properties['INT_CORROSION_TYPE_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_FIELD_EXAM_BASIS_IND'] !== null ? Autolinker.link(String(feature.properties['INT_FIELD_EXAM_BASIS_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_METALLURGICAL_BASIS_IND'] !== null ? Autolinker.link(String(feature.properties['INT_METALLURGICAL_BASIS_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_OTHER_BASIS_IND'] !== null ? Autolinker.link(String(feature.properties['INT_OTHER_BASIS_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_CORROSION_BASIS_DETAILS'] !== null ? Autolinker.link(String(feature.properties['INT_CORROSION_BASIS_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_LOW_POINT_PIPE_LOC_IND'] !== null ? Autolinker.link(String(feature.properties['INT_LOW_POINT_PIPE_LOC_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_ELBOW_LOC_IND'] !== null ? Autolinker.link(String(feature.properties['INT_ELBOW_LOC_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_DROP_OUT_LOC_IND'] !== null ? Autolinker.link(String(feature.properties['INT_DROP_OUT_LOC_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INT_OTHER_LOC_IND'] !== null ? Autolinker.link(String(feature.properties['INT_OTHER_LOC_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CORROSION_LOCATION_DETAILS'] !== null ? Autolinker.link(String(feature.properties['CORROSION_LOCATION_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CORROSION_INHIBITORS'] !== null ? Autolinker.link(String(feature.properties['CORROSION_INHIBITORS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LIQUID_FOUND'] !== null ? Autolinker.link(String(feature.properties['LIQUID_FOUND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COR_HYDROTEST_LEAK_SURVEY_DATE'] !== null ? Autolinker.link(String(feature.properties['COR_HYDROTEST_LEAK_SURVEY_DATE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COR_HYDROTEST_CONDUCTED_IND'] !== null ? Autolinker.link(String(feature.properties['COR_HYDROTEST_CONDUCTED_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COR_HYDROTEST_CONDUCTED_YEAR'] !== null ? Autolinker.link(String(feature.properties['COR_HYDROTEST_CONDUCTED_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COR_HYDROTEST_PRESSURE'] !== null ? Autolinker.link(String(feature.properties['COR_HYDROTEST_PRESSURE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NATURAL_FORCE_TYPE'] !== null ? Autolinker.link(String(feature.properties['NATURAL_FORCE_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EARTH_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['EARTH_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['HEAVY_RAINS_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['HEAVY_RAINS_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LIGHTNING_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['LIGHTNING_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TEMPERATURE_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['TEMPERATURE_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NF_OTHER_DETAILS'] !== null ? Autolinker.link(String(feature.properties['NF_OTHER_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NF_EXTREME_WEATHER_IND'] !== null ? Autolinker.link(String(feature.properties['NF_EXTREME_WEATHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NF_HURRICANE_IND'] !== null ? Autolinker.link(String(feature.properties['NF_HURRICANE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NF_TROPICAL_STORM_IND'] !== null ? Autolinker.link(String(feature.properties['NF_TROPICAL_STORM_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NF_TORNADO_IND'] !== null ? Autolinker.link(String(feature.properties['NF_TORNADO_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NF_OTHER_IND'] !== null ? Autolinker.link(String(feature.properties['NF_OTHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NF_EXTREME_WEATHER_DETAILS'] !== null ? Autolinker.link(String(feature.properties['NF_EXTREME_WEATHER_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PARTY_TYPE'] !== null ? Autolinker.link(String(feature.properties['PARTY_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EX_HYDROTEST_LEAK_SURVEY_DATE'] !== null ? Autolinker.link(String(feature.properties['EX_HYDROTEST_LEAK_SURVEY_DATE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EX_HYDROTEST_CONDUCTED_IND'] !== null ? Autolinker.link(String(feature.properties['EX_HYDROTEST_CONDUCTED_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EX_HYDROTEST_CONDUCTED_YEAR'] !== null ? Autolinker.link(String(feature.properties['EX_HYDROTEST_CONDUCTED_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EX_HYDROTEST_PRESSURE'] !== null ? Autolinker.link(String(feature.properties['EX_HYDROTEST_PRESSURE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PRIOR_NOTIFICATION_IND'] !== null ? Autolinker.link(String(feature.properties['PRIOR_NOTIFICATION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ONE_CALL_SYSTEM_IND'] !== null ? Autolinker.link(String(feature.properties['ONE_CALL_SYSTEM_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EXCAVATOR_IND'] !== null ? Autolinker.link(String(feature.properties['EXCAVATOR_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CONTRACTOR_IND'] !== null ? Autolinker.link(String(feature.properties['CONTRACTOR_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LANDOWNER_IND'] !== null ? Autolinker.link(String(feature.properties['LANDOWNER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOTIFY_CGA_DIRT'] !== null ? Autolinker.link(String(feature.properties['NOTIFY_CGA_DIRT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PUBLIC_ROW_IND'] !== null ? Autolinker.link(String(feature.properties['PUBLIC_ROW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PUBLIC_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['PUBLIC_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PRIVATE_ROW_IND'] !== null ? Autolinker.link(String(feature.properties['PRIVATE_ROW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PRIVATE_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['PRIVATE_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPELINE_EASEMENT_ROW_IND'] !== null ? Autolinker.link(String(feature.properties['PIPELINE_EASEMENT_ROW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['POWER_TRANSMISSION_ROW_IND'] !== null ? Autolinker.link(String(feature.properties['POWER_TRANSMISSION_ROW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RAILROAD_ROW_IND'] !== null ? Autolinker.link(String(feature.properties['RAILROAD_ROW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PUBLIC_UTIL_EASEMENT_ROW_IND'] !== null ? Autolinker.link(String(feature.properties['PUBLIC_UTIL_EASEMENT_ROW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FEDERAL_LAND_ROW_IND'] !== null ? Autolinker.link(String(feature.properties['FEDERAL_LAND_ROW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DATA_NOT_COLLECTED_ROW_IND'] !== null ? Autolinker.link(String(feature.properties['DATA_NOT_COLLECTED_ROW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UNKNOWN_ROW_IND'] !== null ? Autolinker.link(String(feature.properties['UNKNOWN_ROW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EXCAVATOR_TYPE'] !== null ? Autolinker.link(String(feature.properties['EXCAVATOR_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EXCAVATOR_EQUIPMENT'] !== null ? Autolinker.link(String(feature.properties['EXCAVATOR_EQUIPMENT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WORK_PERFORMED'] !== null ? Autolinker.link(String(feature.properties['WORK_PERFORMED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ONE_CALL_NOTIFIED_IND'] !== null ? Autolinker.link(String(feature.properties['ONE_CALL_NOTIFIED_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ONE_CALL_TICKET_NUM'] !== null ? Autolinker.link(String(feature.properties['ONE_CALL_TICKET_NUM'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ONE_CALL_CENTER_NAME'] !== null ? Autolinker.link(String(feature.properties['ONE_CALL_CENTER_NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATOR_TYPE'] !== null ? Autolinker.link(String(feature.properties['LOCATOR_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VISIBLE_MARKS'] !== null ? Autolinker.link(String(feature.properties['VISIBLE_MARKS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FACILITIES_MARKED'] !== null ? Autolinker.link(String(feature.properties['FACILITIES_MARKED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SERVICE_INTERRUPTION'] !== null ? Autolinker.link(String(feature.properties['SERVICE_INTERRUPTION'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SERVICE_INTERRUPTION_HOURS'] !== null ? Autolinker.link(String(feature.properties['SERVICE_INTERRUPTION_HOURS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ROOT_CAUSE'] !== null ? Autolinker.link(String(feature.properties['ROOT_CAUSE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ROOT_CAUSE_OTHER'] !== null ? Autolinker.link(String(feature.properties['ROOT_CAUSE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ONE_CALL_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['ONE_CALL_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LOCATING_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['LOCATING_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EXCAVATION_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['EXCAVATION_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OUTSIDE_FORCE_TYPE'] !== null ? Autolinker.link(String(feature.properties['OUTSIDE_FORCE_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VEHICLE_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['VEHICLE_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_HURRICANE_IND'] !== null ? Autolinker.link(String(feature.properties['OSF_HURRICANE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_TROPICAL_STORM_IND'] !== null ? Autolinker.link(String(feature.properties['OSF_TROPICAL_STORM_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_TORNADO_IND'] !== null ? Autolinker.link(String(feature.properties['OSF_TORNADO_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_HEAVY_RAINS_IND'] !== null ? Autolinker.link(String(feature.properties['OSF_HEAVY_RAINS_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_OTHER_WEATHER_IND'] !== null ? Autolinker.link(String(feature.properties['OSF_OTHER_WEATHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_OTHER_WEATHER_DETAILS'] !== null ? Autolinker.link(String(feature.properties['OSF_OTHER_WEATHER_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_HYDROTEST_LEAK_SURVEY_DATE'] !== null ? Autolinker.link(String(feature.properties['OSF_HYDROTEST_LEAK_SURVEY_DATE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_HYDROTEST_CONDUCTED_IND'] !== null ? Autolinker.link(String(feature.properties['OSF_HYDROTEST_CONDUCTED_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_HYDROTEST_CONDUCTED_YEAR'] !== null ? Autolinker.link(String(feature.properties['OSF_HYDROTEST_CONDUCTED_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_HYDROTEST_PRESSURE'] !== null ? Autolinker.link(String(feature.properties['OSF_HYDROTEST_PRESSURE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INTENTIONAL_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['INTENTIONAL_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INTENTIONAL_DETAILS'] !== null ? Autolinker.link(String(feature.properties['INTENTIONAL_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OSF_OTHER_DETAILS'] !== null ? Autolinker.link(String(feature.properties['OSF_OTHER_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PWJF_FAILURE_TYPE'] !== null ? Autolinker.link(String(feature.properties['PWJF_FAILURE_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_BODY_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['PIPE_BODY_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_BODY_DETAILS'] !== null ? Autolinker.link(String(feature.properties['PIPE_BODY_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BUTT_WELD_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['BUTT_WELD_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BUTT_WELD_DETAILS'] !== null ? Autolinker.link(String(feature.properties['BUTT_WELD_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FILLET_WELD_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['FILLET_WELD_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FILLET_WELD_DETAILS'] !== null ? Autolinker.link(String(feature.properties['FILLET_WELD_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_SEAM_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['PIPE_SEAM_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PIPE_SEAM_DETAILS'] !== null ? Autolinker.link(String(feature.properties['PIPE_SEAM_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MECHANICAL_FITTING_INVOLVED'] !== null ? Autolinker.link(String(feature.properties['MECHANICAL_FITTING_INVOLVED'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MEC_FITTING_OTHER'] !== null ? Autolinker.link(String(feature.properties['MEC_FITTING_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MECHANICAL_FITTING_TYPE'] !== null ? Autolinker.link(String(feature.properties['MECHANICAL_FITTING_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MEC_FITTING_TYPE_OTHER'] !== null ? Autolinker.link(String(feature.properties['MEC_FITTING_TYPE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_MANUFACTURER'] !== null ? Autolinker.link(String(feature.properties['MPW_MANUFACTURER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_MANUFACTURE_YEAR'] !== null ? Autolinker.link(String(feature.properties['MPW_MANUFACTURE_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_INSTALLED_YEAR'] !== null ? Autolinker.link(String(feature.properties['MPW_INSTALLED_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_OTHER_ATTR'] !== null ? Autolinker.link(String(feature.properties['MPW_OTHER_ATTR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_MAT_JOINED_STEEL'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_MAT_JOINED_STEEL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_MAT_JOINED_CAST'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_MAT_JOINED_CAST'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_MAT_JOINED_IRON'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_MAT_JOINED_IRON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_MAT_JOINED_COPPER'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_MAT_JOINED_COPPER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_MAT_JOINED_PLASTIC'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_MAT_JOINED_PLASTIC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_MAT_JOINED_UNKNOWN'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_MAT_JOINED_UNKNOWN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_MAT_JOINED_OTHER_IND'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_MAT_JOINED_OTHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_MAT_JOINED_OTHER'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_MAT_JOINED_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_PLASTIC_TYPE'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_PLASTIC_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_FIRST_PLASTIC_TYPE_OTHER'] !== null ? Autolinker.link(String(feature.properties['MPW_FIRST_PLASTIC_TYPE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SECOND_MAT_JOINED_STEEL'] !== null ? Autolinker.link(String(feature.properties['MPW_SECOND_MAT_JOINED_STEEL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SECOND_MAT_JOINED_CAST'] !== null ? Autolinker.link(String(feature.properties['MPW_SECOND_MAT_JOINED_CAST'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SECOND_MAT_JOINED_IRON'] !== null ? Autolinker.link(String(feature.properties['MPW_SECOND_MAT_JOINED_IRON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SECOND_MAT_JOINED_COPPER'] !== null ? Autolinker.link(String(feature.properties['MPW_SECOND_MAT_JOINED_COPPER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SECOND_MAT_JOINED_PLASTIC'] !== null ? Autolinker.link(String(feature.properties['MPW_SECOND_MAT_JOINED_PLASTIC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SECOND_MAT_JOINED_UNKNOWN'] !== null ? Autolinker.link(String(feature.properties['MPW_SECOND_MAT_JOINED_UNKNOWN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SEC_MAT_JOINED_OTHER_IND'] !== null ? Autolinker.link(String(feature.properties['MPW_SEC_MAT_JOINED_OTHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SECOND_MAT_JOINED_OTHER'] !== null ? Autolinker.link(String(feature.properties['MPW_SECOND_MAT_JOINED_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SECOND_PLASTIC_TYPE'] !== null ? Autolinker.link(String(feature.properties['MPW_SECOND_PLASTIC_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MPW_SECOND_PLASTIC_TYPE_OTHER'] !== null ? Autolinker.link(String(feature.properties['MPW_SECOND_PLASTIC_TYPE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INCLUDE_RESTRAINT_IND'] !== null ? Autolinker.link(String(feature.properties['INCLUDE_RESTRAINT_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INCLUDE_RESTRAINT'] !== null ? Autolinker.link(String(feature.properties['INCLUDE_RESTRAINT'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FITTING_TYPE'] !== null ? Autolinker.link(String(feature.properties['CPW_FITTING_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_MANUFACTURER'] !== null ? Autolinker.link(String(feature.properties['CPW_MANUFACTURER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_MANUFACTURE_YEAR'] !== null ? Autolinker.link(String(feature.properties['CPW_MANUFACTURE_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_INSTALLED_YEAR'] !== null ? Autolinker.link(String(feature.properties['CPW_INSTALLED_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_OTHER_ATTR'] !== null ? Autolinker.link(String(feature.properties['CPW_OTHER_ATTR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_MAT_JOINED_STEEL'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_MAT_JOINED_STEEL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_MAT_JOINED_CAST'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_MAT_JOINED_CAST'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_MAT_JOINED_IRON'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_MAT_JOINED_IRON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_MAT_JOINED_COPPER'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_MAT_JOINED_COPPER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_MAT_JOINED_PLASTIC'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_MAT_JOINED_PLASTIC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_MAT_JOINED_UNKNOWN'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_MAT_JOINED_UNKNOWN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_MAT_JOINED_OTHER_IND'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_MAT_JOINED_OTHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_MAT_JOINED_OTHER'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_MAT_JOINED_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_PLASTIC_TYPE'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_PLASTIC_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_FIRST_PLASTIC_TYPE_OTHER'] !== null ? Autolinker.link(String(feature.properties['CPW_FIRST_PLASTIC_TYPE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SECOND_MAT_JOINED_STEEL'] !== null ? Autolinker.link(String(feature.properties['CPW_SECOND_MAT_JOINED_STEEL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SECOND_MAT_JOINED_CAST'] !== null ? Autolinker.link(String(feature.properties['CPW_SECOND_MAT_JOINED_CAST'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SECOND_MAT_JOINED_IRON'] !== null ? Autolinker.link(String(feature.properties['CPW_SECOND_MAT_JOINED_IRON'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SECOND_MAT_JOINED_COPPER'] !== null ? Autolinker.link(String(feature.properties['CPW_SECOND_MAT_JOINED_COPPER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SECOND_MAT_JOINED_PLASTIC'] !== null ? Autolinker.link(String(feature.properties['CPW_SECOND_MAT_JOINED_PLASTIC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SECOND_MAT_JOINED_UNKNOWN'] !== null ? Autolinker.link(String(feature.properties['CPW_SECOND_MAT_JOINED_UNKNOWN'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SEC_MAT_JOINED_OTHER_IND'] !== null ? Autolinker.link(String(feature.properties['CPW_SEC_MAT_JOINED_OTHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SECOND_MAT_JOINED_OTHER'] !== null ? Autolinker.link(String(feature.properties['CPW_SECOND_MAT_JOINED_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SECOND_PLASTIC_TYPE'] !== null ? Autolinker.link(String(feature.properties['CPW_SECOND_PLASTIC_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CPW_SECOND_PLASTIC_TYPE_OTHER'] !== null ? Autolinker.link(String(feature.properties['CPW_SECOND_PLASTIC_TYPE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PLASTIC_JOINT_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['PLASTIC_JOINT_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PLASTIC_JOINT_DETAILS'] !== null ? Autolinker.link(String(feature.properties['PLASTIC_JOINT_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FPW_INSTALLED_YEAR'] !== null ? Autolinker.link(String(feature.properties['FPW_INSTALLED_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FPW_OTHER_ATTR'] !== null ? Autolinker.link(String(feature.properties['FPW_OTHER_ATTR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FPW_FIRST_PLASTIC_TYPE'] !== null ? Autolinker.link(String(feature.properties['FPW_FIRST_PLASTIC_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FPW_FIRST_PLASTIC_TYPE_OTHER'] !== null ? Autolinker.link(String(feature.properties['FPW_FIRST_PLASTIC_TYPE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FPW_SECOND_PLASTIC_TYPE'] !== null ? Autolinker.link(String(feature.properties['FPW_SECOND_PLASTIC_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FPW_SECOND_PLASTIC_TYPE_OTHER'] !== null ? Autolinker.link(String(feature.properties['FPW_SECOND_PLASTIC_TYPE_OTHER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PWJF_FAILURE_DETAILS'] !== null ? Autolinker.link(String(feature.properties['PWJF_FAILURE_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_DENT_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_DENT_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_GOUGE_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_GOUGE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_PIPE_BEND_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_PIPE_BEND_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_ARC_BURN_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_ARC_BURN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_CRACK_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_CRACK_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_LACK_FUSION_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_LACK_FUSION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_LAMINATION_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_LAMINATION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_BUCKLE_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_BUCKLE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_WRINKLE_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_WRINKLE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_MISALIGNMENT_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_MISALIGNMENT_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_BURNT_STEEL_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_BURNT_STEEL_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_OTHER_IND'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_OTHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_OTHER_DETAILS'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_OTHER_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDITIONAL_FACTOR_DETAILS'] !== null ? Autolinker.link(String(feature.properties['ADDITIONAL_FACTOR_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESULT_CONSTRUCTION_IND'] !== null ? Autolinker.link(String(feature.properties['RESULT_CONSTRUCTION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESULT_MATERIAL_IND'] !== null ? Autolinker.link(String(feature.properties['RESULT_MATERIAL_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESULT_DESIGN_IND'] !== null ? Autolinker.link(String(feature.properties['RESULT_DESIGN_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESULT_PREVIOUS_IND'] !== null ? Autolinker.link(String(feature.properties['RESULT_PREVIOUS_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESULT_CONSTRUCTION_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['RESULT_CONSTRUCTION_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESULT_MATERIAL_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['RESULT_MATERIAL_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESULT_MATERIAL_DETAILS'] !== null ? Autolinker.link(String(feature.properties['RESULT_MATERIAL_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['HYDROTEST_CONDUCTED_IND'] !== null ? Autolinker.link(String(feature.properties['HYDROTEST_CONDUCTED_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['HYDROTEST_CONDUCTED_YEAR'] !== null ? Autolinker.link(String(feature.properties['HYDROTEST_CONDUCTED_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['HYDROTEST_PRESSURE'] !== null ? Autolinker.link(String(feature.properties['HYDROTEST_PRESSURE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQ_FAILURE_TYPE'] !== null ? Autolinker.link(String(feature.properties['EQ_FAILURE_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CONTROL_VALVE_IND'] !== null ? Autolinker.link(String(feature.properties['CONTROL_VALVE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INSTRUMENTATION_IND'] !== null ? Autolinker.link(String(feature.properties['INSTRUMENTATION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SCADA_IND'] !== null ? Autolinker.link(String(feature.properties['SCADA_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COMMUNICATIONS_IND'] !== null ? Autolinker.link(String(feature.properties['COMMUNICATIONS_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BLOCK_VALVE_IND'] !== null ? Autolinker.link(String(feature.properties['BLOCK_VALVE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CHECK_VALVE_IND'] !== null ? Autolinker.link(String(feature.properties['CHECK_VALVE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RELIEF_VALVE_IND'] !== null ? Autolinker.link(String(feature.properties['RELIEF_VALVE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['POWER_FAILURE_IND'] !== null ? Autolinker.link(String(feature.properties['POWER_FAILURE_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STOPPLE_CONTROL_FITTING_IND'] !== null ? Autolinker.link(String(feature.properties['STOPPLE_CONTROL_FITTING_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PRESSURE_REGULATOR_IND'] !== null ? Autolinker.link(String(feature.properties['PRESSURE_REGULATOR_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_CONTROL_RELIEF_IND'] !== null ? Autolinker.link(String(feature.properties['OTHER_CONTROL_RELIEF_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_CONTROL_RELIEF_DETAILS'] !== null ? Autolinker.link(String(feature.properties['OTHER_CONTROL_RELIEF_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_STRIPPED_IND'] !== null ? Autolinker.link(String(feature.properties['OTHER_STRIPPED_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_STRIPPED_DETAILS'] !== null ? Autolinker.link(String(feature.properties['OTHER_STRIPPED_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_NON_THREADED_IND'] !== null ? Autolinker.link(String(feature.properties['OTHER_NON_THREADED_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_NON_THREADED_DETAILS'] !== null ? Autolinker.link(String(feature.properties['OTHER_NON_THREADED_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VALVE_OTHER_IND'] !== null ? Autolinker.link(String(feature.properties['VALVE_OTHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VALVE_OTHER_DETAILS'] !== null ? Autolinker.link(String(feature.properties['VALVE_OTHER_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VALVE_TYPE'] !== null ? Autolinker.link(String(feature.properties['VALVE_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQ_MANUFACTURER'] !== null ? Autolinker.link(String(feature.properties['EQ_MANUFACTURER'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQ_MANUFACTURE_YEAR'] !== null ? Autolinker.link(String(feature.properties['EQ_MANUFACTURE_YEAR'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EQ_FAILURE_DETAILS'] !== null ? Autolinker.link(String(feature.properties['EQ_FAILURE_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATION_TYPE'] !== null ? Autolinker.link(String(feature.properties['OPERATION_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATION_DETAILS'] !== null ? Autolinker.link(String(feature.properties['OPERATION_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RELATED_INADEQUATE_PROC_IND'] !== null ? Autolinker.link(String(feature.properties['RELATED_INADEQUATE_PROC_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RELATED_NO_PROC_IND'] !== null ? Autolinker.link(String(feature.properties['RELATED_NO_PROC_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RELATED_FAILURE_FOLLOW_IND'] !== null ? Autolinker.link(String(feature.properties['RELATED_FAILURE_FOLLOW_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RELATED_OTHER_IND'] !== null ? Autolinker.link(String(feature.properties['RELATED_OTHER_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATION_RELATED_DETAILS'] !== null ? Autolinker.link(String(feature.properties['OPERATION_RELATED_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CATEGORY_TYPE'] !== null ? Autolinker.link(String(feature.properties['CATEGORY_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OPERATOR_QUALIFICATION_IND'] !== null ? Autolinker.link(String(feature.properties['OPERATOR_QUALIFICATION_IND'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['QUALIFIED_INDIVIDUALS'] !== null ? Autolinker.link(String(feature.properties['QUALIFIED_INDIVIDUALS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OTHER_TYPE'] !== null ? Autolinker.link(String(feature.properties['OTHER_TYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MISC_DETAILS'] !== null ? Autolinker.link(String(feature.properties['MISC_DETAILS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UNKNOWN_SUBTYPE'] !== null ? Autolinker.link(String(feature.properties['UNKNOWN_SUBTYPE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PREPARER_NAME'] !== null ? Autolinker.link(String(feature.properties['PREPARER_NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PREPARER_TITLE'] !== null ? Autolinker.link(String(feature.properties['PREPARER_TITLE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PREPARER_EMAIL'] !== null ? Autolinker.link(String(feature.properties['PREPARER_EMAIL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PREPARER_TELEPHONE'] !== null ? Autolinker.link(String(feature.properties['PREPARER_TELEPHONE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PREPARER_FAX'] !== null ? Autolinker.link(String(feature.properties['PREPARER_FAX'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PREPARED_DATE'] !== null ? Autolinker.link(String(feature.properties['PREPARED_DATE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AUTHORIZER_NAME'] !== null ? Autolinker.link(String(feature.properties['AUTHORIZER_NAME'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AUTHORIZER_TITLE'] !== null ? Autolinker.link(String(feature.properties['AUTHORIZER_TITLE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AUTHORIZER_TELEPHONE'] !== null ? Autolinker.link(String(feature.properties['AUTHORIZER_TELEPHONE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AUTHORIZER_EMAIL'] !== null ? Autolinker.link(String(feature.properties['AUTHORIZER_EMAIL'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NARRATIVE'] !== null ? Autolinker.link(String(feature.properties['NARRATIVE'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_gd2010toPresentxlsxgd2010toPresent_0_0() {
+            return {
+                pane: 'pane_gd2010toPresentxlsxgd2010toPresent_0',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(168,16,16,0.73)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,0.73)',
+            }
+        }
+        map.createPane('pane_gd2010toPresentxlsxgd2010toPresent_0');
+        map.getPane('pane_gd2010toPresentxlsxgd2010toPresent_0').style.zIndex = 400;
+        map.getPane('pane_gd2010toPresentxlsxgd2010toPresent_0').style['mix-blend-mode'] = 'normal';
+        var layer_gd2010toPresentxlsxgd2010toPresent_0 = new L.geoJson(json_gd2010toPresentxlsxgd2010toPresent_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_gd2010toPresentxlsxgd2010toPresent_0',
+            onEachFeature: pop_gd2010toPresentxlsxgd2010toPresent_0,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_gd2010toPresentxlsxgd2010toPresent_0_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_gd2010toPresentxlsxgd2010toPresent_0);
+        map.addLayer(layer_gd2010toPresentxlsxgd2010toPresent_0);
+        setBounds();
+        </script>
+    </body>
+</html>
